@@ -1,0 +1,49 @@
+<main class="container">
+    <div class="bg-light p-5 rounded">
+        <h1 class="display-4">{{reporte.nombre}}</h1>
+        <p class="lead">{{reporte.texto}}</p>
+        <hr class="my-4">
+        <p>{{reporte.descripcion}}</p>
+        <h5>Comentarios:</h5>
+        <ul>
+            <li *ngFor="let c of reporte.comentarios">
+                <p>{{c.comentario}} </p>
+                <p><small><strong>Publicado por: {{c.nombre}}</strong></small></p>
+                <p><small>{{c.fecha | date}}</small></p>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Agregar comentario
+        </button>
+    </div>
+</main>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar comentario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input [(ngModel)]="nombre" name="nombre" type="text" class="form-control" id="nombre"
+                            placeholder="Nombre">
+                        <div id="nombre" class="form-text">Coloque su nombre</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reporte" class="form-label">Comentario</label>
+                        <input [(ngModel)]="comentario" name="comentario" type="text" class="form-control"
+                            id="comentario" placeholder="Reporte">
+                        <div id="reporte" class="form-text">Coloque su comentario</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button (click)="enviar()" type="button" class="btn btn-primary">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>

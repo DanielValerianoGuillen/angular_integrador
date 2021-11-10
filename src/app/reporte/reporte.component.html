@@ -1,0 +1,32 @@
+
+
+<div class="card">
+    <div class="card-header">
+        Reporte
+    </div>
+    <div class="card-body">
+        
+        <h5 class="display-9">De: {{reporte.nombre}}</h5>
+        <p class="card-text">{{reporte.texto}}</p>
+        <p class="card-text">{{reporte.imagen}}</p>
+
+        <div class="bg-light p-4">
+
+            
+
+            <h5>Comentarios:</h5>
+            <ul>
+                <li *ngFor="let c of reporte.comentarios">
+                    <p>{{c.comentario}} </p>
+                    <p><small><strong>Publicado por: {{c.nombre}}</strong></small></p>
+                    <p><small>{{c.fecha | date}}</small></p>
+                </li>
+            </ul>
+            
+        </div>
+        <button type="button" class="btn btn-primary" [routerLink]="['/reporte/' ,reporte.id]">
+            Ver reporte
+        </button>
+    </div>
+</div>
+
